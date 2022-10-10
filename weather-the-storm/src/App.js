@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
-  const [query, setQuery] = useState({q: 'london'});
+  const [query, setQuery] = useState({q: 'new york'});
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
 
