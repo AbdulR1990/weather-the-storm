@@ -34,4 +34,4 @@ function TopButtons({ setQuery }) {
     </div>
 }
 
-export default TopButtons
+export default TopButtons;

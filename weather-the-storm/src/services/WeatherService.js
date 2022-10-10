@@ -1,7 +1,7 @@
 import { DateTime } from "luxon";
 
-const API_KEY = '3cdd7438cdb297ff76c24ad7c69f908d';
-const BASE_URL = 'https://api.openweathermap.org/data/2.5';
+const API_KEY = "3cdd7438cdb297ff76c24ad7c69f908d";
+const BASE_URL = "https://api.openweathermap.org/data/2.5";
 
 const getWeatherData = (infoType, searchParams) => {
     const url = new URL(BASE_URL + "/" + infoType);
@@ -12,26 +12,26 @@ const getWeatherData = (infoType, searchParams) => {
 
 const formatCurrentWeather = (data) => {
     const {
-        coord: {lat, lon}, 
-        main: {temp, feels_like, temp_min, temp_max, humidity}, 
+        coord: { lat, lon }, 
+        main: { temp, feels_like, temp_min, temp_max, humidity }, 
         name, 
         dt, 
-        sys: {country, sunrise, sunset}, 
+        sys: { country, sunrise, sunset }, 
         weather, 
-        wind: {speed}
+        wind: { speed }
     } = data;
 
-    const {main: details, icon} = weather[0];
+    const { main: details, icon } = weather[0];
 
-    return {lat, lon, temp, feels_like, temp_min, temp_max, humidity, name, dt, 
-        country, sunrise, sunset, details, icon, speed};
+    return { lat, lon, temp, feels_like, temp_min, temp_max, humidity, name, dt, 
+        country, sunrise, sunset, details, icon, speed };
 };
 
 const formatForecastWeather = (data) => {
     let { timezone, daily, hourly } = data;
     daily = daily.slice(1, 6).map((d) => {
         return {
-            title: formatToLocalTime(d.dt, timezone, 'ccc'), 
+            title: formatToLocalTime(d.dt, timezone, "ccc"), 
             temp: d.temp.day, 
             icon: d.weather[0].icon
         };
@@ -39,7 +39,7 @@ const formatForecastWeather = (data) => {
 
     hourly = hourly.slice(1, 6).map((d) => {
         return {
-            title: formatToLocalTime(d.dt, timezone, 'hh:mm a'), 
+            title: formatToLocalTime(d.dt, timezone, "hh:mm a"), 
             temp: d.temp, 
             icon: d.weather[0].icon
         };

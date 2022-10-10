@@ -73,4 +73,4 @@ function TemperatureAndDetails({weather: {
   );
 }
 
-export default TemperatureAndDetails
+export default TemperatureAndDetails;

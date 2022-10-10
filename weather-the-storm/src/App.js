@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
-  const [query, setQuery] = useState({q: 'new york'});
+  const [query, setQuery] = useState({q: "Brooklyn"});
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
 
@@ -22,9 +22,10 @@ function App() {
 
       toast.info('Fetching weather for ' + message);
 
-      await getFormattedWeatherData({ ...query, units }).then(data => {
+      await getFormattedWeatherData({ ...query, units }).then((data) => {
 
         toast.success(`Successfully fetched weather for ${data.name}, ${data.country}.`);
+
         setWeather(data);
       });
     };
